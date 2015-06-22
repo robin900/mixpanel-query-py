@@ -10,6 +10,7 @@ setup(
     url='https://www.github.com/cooncesean/mixpanel-query-py',
     packages=find_packages(),
     install_requires=['six'],
+    test_suite='tests',
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
