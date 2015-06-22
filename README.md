@@ -2,6 +2,7 @@
 
 The Python interface to fetch data from Mixpanel via [Mixpanel's Data Query API](https://mixpanel.com/docs/api-documentation/data-export-api). Note, this differs from the official [Python binding](https://github.com/mixpanel/mixpanel-python) which only provides an interface to send data to Mixpanel.
 
+Compatible with Python 2.6 through Python 3.4.
 
 # Installation
 
