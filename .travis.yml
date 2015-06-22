@@ -1,0 +1,10 @@
+language: python
+python:
+  - "2.6"
+  - "2.7"
+  - "3.2"
+  - "3.3"
+  - "3.4"
+env:
+  secure: "fHD8lBV0/y+mit6rMkj9mCmrh2B1u0YajDN6qkpKH+Rxb7g0Q/fW2FDNdeRb4CNPRNKXIKE9OHzyfwEKdrrg4kRdM2+dSo77QUou86GEGtNuGDubwMyG562CDFxdAfJGd4699rviWskMaybyGQkcN1dC6ieSCS6e6YqxZ8QK915GKOGWDsDIAYDEkHB4qWerOwjQc/6FHvSZyYhTm2jvjDdQl7NfUmJqc4cAWeDUZbCL7yPaHbA819WacrBL4rdu3K/51wazlZn34g6XsCq0/mOXqT8g+uF26czHhB89TnxZcS+ygmfZ88MSls47M1ZikWQyYi2c+qcD+DNyDsHAOq6CvRJCMwTp/aKiD0BUsdBa+nlPaN6yjT1j/VeQoJJFWYXW7/cp7MNT+FwjRh+Yh+dEy+32vJU3ZZuCF3SvzCltMF/RZS0Xlj52yxOEv/Fy1q0+2xEb8O8WcTuutev4FHLYa3YIsVP6fKIdh2jFanKeYgSzfuCw7RYXqOMsXhgwBeYHYIs6NrXSkFOiGJjOEmsdwHs+/PbI7pyQoybIBFxBfcwXrQ+8r0t7ENs3qDFil8OZGZRVuItdBeucEUvMRgOu2rkYnepdiOXh1J7PzY2cxOGXwSzQKWXSrCmEpStWBn60R8LHs9xRc2saYbcWVZEqdQdwoGAQHHjKxyekhWk="
+script: "python setup.py test"

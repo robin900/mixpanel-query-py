@@ -1,10 +1,11 @@
 import unittest
 import mixpanel_query.client
+import os
 
 class SmokeTestCase(unittest.TestCase):
 
-    _key = 'XXX'
-    _secret = 'XXX'
+    _key = os.environ("API_KEY")
+    _secret = os.environ("API_SECRET")
 
     def setUp(self):
         self.client = mixpanel_query.client.MixpanelQueryClient(self._key, self._secret)
