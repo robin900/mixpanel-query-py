@@ -1,4 +1,5 @@
-# mixpanel-query-py
+# mixpanel-query-py 
+[![Build Status](https://travis-ci.org/robin900/mixpanel-query-py.svg?branch=rbt-tox)](https://travis-ci.org/robin900/mixpanel-query-py)
 
 The Python interface to fetch data from Mixpanel via [Mixpanel's Data Query API](https://mixpanel.com/docs/api-documentation/data-export-api). Note, this differs from the official [Python binding](https://github.com/mixpanel/mixpanel-python) which only provides an interface to send data to Mixpanel.
 
