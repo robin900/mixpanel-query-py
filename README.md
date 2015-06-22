@@ -4,6 +4,7 @@ The Python interface to fetch data from Mixpanel via [Mixpanel's Data Query API]
 
 Compatible with Python 2.6 through Python 3.4.
 
+
 # Installation
 
 To install mixpanel-query-py, simply:
