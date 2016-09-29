@@ -744,28 +744,28 @@ class MixpanelQueryClient(object):
             inner='properties["$city"]',
             outer='properties["$region"]',
         )
-        {   
-        u'data': {   
+        {
+        u'data': {
             u'series': [u'2015-06-01', u'2015-06-02', u'2015-06-03'],
-            u'values': {   
-                u'North Carolina': {   
-                    u'Charlotte': {   
+            u'values': {
+                u'North Carolina': {
+                    u'Charlotte': {
                         u'2015-06-01': 300,
                         u'2015-06-02': 111,
                         u'2015-06-03': 171
                     },
-                    u'Austin': {   
+                    u'Austin': {
                         u'2015-06-01': 0,
                         u'2015-06-02': 0,
                         u'2015-06-03': 0
                     }
                 },
-                u'Texas': {   
-                    u'Charlotte': {   
+                u'Texas': {
+                    u'Charlotte': {
                         u'2015-06-01': 0,
                         u'2015-06-02': 0,
                         u'2015-06-03': 0},
-                    u'Austin': {   
+                    u'Austin': {
                         u'2015-06-01': 3181,
                         u'2015-06-02': 3219,
                         u'2015-06-03': 3484
@@ -896,7 +896,7 @@ class MixpanelQueryClient(object):
         # https://mixpanel.com/docs/api-documentation/exporting-raw-data-you-inserted-into-mixpanel
         response_data = response.read()
         lines = _totext(response_data).split('\n')
-        
+
         for line in lines:
             if line:
                 yield json.loads(line)

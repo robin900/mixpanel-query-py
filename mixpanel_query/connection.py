@@ -5,8 +5,9 @@ requests to the Mixpanel API.
 import hashlib
 import json
 import time
+import base64
 import six
-from six.moves.urllib.parse import urlencode 
+from six.moves.urllib.parse import urlencode
 from six.moves.urllib import request as url_request
 
 from mixpanel_query.utils import _tobytes
@@ -18,7 +19,7 @@ class Connection(object):
     The `Connection` object's sole responsibility is to format, send to
     and parse http responses from the Mixpanel API.
     """
-    ENDPOINT = 'http://mixpanel.com/api'
+    ENDPOINT = 'https://mixpanel.com/api'
     DATA_ENDPOINT = 'https://data.mixpanel.com/api'
     VERSION = '2.0'
     DEFAULT_TIMEOUT = 120
@@ -40,16 +41,8 @@ class Connection(object):
         Make a request to the Mixpanel API and return a raw urllib2/url.request file-like
         response object.
         """
-        params['api_key'] = self.client.api_key
-        params['expire'] = int(time.time()) + 600   # Grant this request 10 minutes.
-        params['format'] = response_format
         # Getting rid of the None params
         params = self.check_params(params)
-
-        # Creating signature
-        if 'sig' in params:
-            del params['sig']
-        params['sig'] = self.hash_args(params, self.client.api_secret)
 
         request_url = '{base_url}/{version}/{method_name}/?{encoded_params}'.format(
             base_url=base_url,
@@ -57,7 +50,13 @@ class Connection(object):
             method_name=method_name,
             encoded_params=self.unicode_urlencode(params)
         )
-        return url_request.urlopen(request_url, timeout=self.DEFAULT_TIMEOUT if self.client.timeout is None else self.client.timeout)
+        # new authentication is Basic, with api_secret as username and empty password.
+        request_headers = {
+            'Authorization': _totext(base64.standard_b64encode(_tobytes("{}:".format(self.client.api_secret))))
+        }
+        request_obj = url_request.Request(request_url, headers=request_headers)
+        effective_timeout = (self.DEFAULT_TIMEOUT if self.client.timeout is None else self.client.timeout)
+        return url_request.urlopen(request_obj, timeout=effective_timeout)
 
     def unicode_urlencode(self, params):
         """
